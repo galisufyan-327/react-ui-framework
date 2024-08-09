@@ -17,5 +17,10 @@
       "module": "./remote",
       "display_name": "Remote App 2"
     }
-  ]
+  ],
+  "componentVersions": {
+    "formComponent": {
+      "version": 1
+    }
+  }
 }

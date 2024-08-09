@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import AppBar from "@mui/material/AppBar"
 import Box from "@mui/material/Box"
 import CssBaseline from "@mui/material/CssBaseline"
@@ -8,27 +8,15 @@ import Button from "@mui/material/Button"
 import { Link } from "react-router-dom"
 
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
-import { replaceMenuItems, selectMenuItems } from "./menuSlice"
+import { selectMenuItems } from "./menuSlice"
 import { Menu, MenuItem } from "@mui/material"
 import type { ViewPanelConfig } from "../viewPanel/viewPanelSlice"
-import {
-  mountApp,
-  replaceRemoteAppConfigs,
-  selectRemoteAppConfigs,
-} from "../viewPanel/viewPanelSlice"
+import { mountApp, selectRemoteAppConfigs } from "../viewPanel/viewPanelSlice"
 
 export default function DynamicMenu() {
   const dispatch = useAppDispatch()
   const navItems = useAppSelector(selectMenuItems)
   const remoteAppOptions = useAppSelector(selectRemoteAppConfigs)
-
-  useEffect(() => {
-    import("../../menuConfig.json").then(dynamicMenuItems => {
-      dispatch(replaceMenuItems(dynamicMenuItems.default.menuItems))
-      dispatch(replaceRemoteAppConfigs(dynamicMenuItems.default.remoteApps))
-      dispatch(mountApp(dynamicMenuItems.default.remoteApps[0]))
-    })
-  }, [dispatch])
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
