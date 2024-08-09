@@ -13,10 +13,15 @@ export default defineConfig({
         // add dummy.js to prevent vite from throwing an error
         dummy: "dummy.js",
       },
+      exposes: {
+        "./store": "./src/app/store", // Expose the Redux store
+      },
       shared: [
         "react",
         "react-dom",
         "react-router-dom",
+        "redux",
+        "react-redux",
       ],
     }),
   ],
