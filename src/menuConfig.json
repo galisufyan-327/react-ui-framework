@@ -1,5 +1,21 @@
-[
-  { "text": "Home", "to": "/" },
-  { "text": "About", "to": "/about" },
-  { "text": "Contact", "to": "/contact" }
-]
+{
+  "menuItems": [
+    { "text": "Home", "to": "/" },
+    { "text": "About", "to": "/about" },
+    { "text": "Contact", "to": "/contact" }
+  ],
+  "remoteApps": [
+    {
+      "url": "http://localhost:4173/assets/remoteEntry.js",
+      "name": "remote",
+      "module": "./remote",
+      "display_name": "Remote App 1"
+    },
+    {
+      "url": "http://localhost:4175/assets/remoteEntry.js",
+      "name": "remote",
+      "module": "./remote",
+      "display_name": "Remote App 2"
+    }
+  ]
+}
