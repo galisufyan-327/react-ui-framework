@@ -7,14 +7,12 @@ import {
   replaceRemoteAppConfigs,
   selectCurrentRemoteApp,
 } from "./features/viewPanel/viewPanelSlice"
-import { lazy, Suspense, useEffect } from "react"
-import {
-  replaceComponentVersionConfigs,
-  selectComponentVersionConfig,
-} from "./features/componentVersion/componentVersionSlice"
+import { useEffect } from "react"
+import { replaceComponentVersionConfigs } from "./features/componentVersion/componentVersionSlice"
 import { replaceMenuItems } from "./features/menu/menuSlice"
 import { renderDiagram } from "./features/diagram/diagramSlice"
 import DiagramContainer from "./features/diagram/DiagramContainer"
+import ComponentVersion from "./features/componentVersion/ComponentVersion"
 
 const App = () => {
   const dispatch = useAppDispatch()
@@ -35,35 +33,14 @@ const App = () => {
   }, [dispatch])
 
   const currentRemoteAppConfig = useAppSelector(selectCurrentRemoteApp)
-  const formComponentVersion =
-    useAppSelector(selectComponentVersionConfig).formComponent || {}
 
-  const FormComponent = lazy(() => {
-    let component
-    switch (Number(formComponentVersion.version)) {
-      case 2:
-        component = import("./components/contactForm/ContactFormV2")
-        break
-
-      // use v1 if v1 configured or no version specified
-      case 1:
-      default:
-        component = import("./components/contactForm/ContactFormV1")
-        break
-    }
-    return component
-  })
   return (
     <div className="App">
       <Menu></Menu>
       <Routes>
         <Route
           path="/contact"
-          element={
-            <Suspense fallback="Loading...">
-              <FormComponent></FormComponent>
-            </Suspense>
-          }
+          element={<ComponentVersion componentName="contactForm" />}
         />
         <Route
           path="/diagram"
