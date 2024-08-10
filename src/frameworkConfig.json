@@ -7,13 +7,13 @@
   ],
   "remoteApps": [
     {
-      "url": "http://localhost:4173/assets/remoteEntry.js",
+      "url": "https://react-remote-app-2-mxjz.vercel.app/assets/remoteEntry.js",
       "name": "remote",
       "module": "./remote",
       "display_name": "Remote App 1"
     },
     {
-      "url": "http://localhost:4175/assets/remoteEntry.js",
+      "url": "https://react-remote-app-2.vercel.app/assets/remoteEntry.js",
       "name": "remote",
       "module": "./remote",
       "display_name": "Remote App 2"
