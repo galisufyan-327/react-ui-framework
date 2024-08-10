@@ -4,9 +4,11 @@ import { setupListeners } from "@reduxjs/toolkit/query"
 import { menuSlice } from "../features/menu/menuSlice"
 import { viewPanelSlice } from "../features/viewPanel/viewPanelSlice"
 import { componentVersionSlice } from "../features/componentVersion/componentVersionSlice"
+import { diagramSlice } from "../features/diagram/diagramSlice"
 
 const rootReducer = combineSlices(
   componentVersionSlice,
+  diagramSlice,
   menuSlice,
   viewPanelSlice,
 )

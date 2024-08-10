@@ -13,6 +13,8 @@ import {
   selectComponentVersionConfig,
 } from "./features/componentVersion/componentVersionSlice"
 import { replaceMenuItems } from "./features/menu/menuSlice"
+import { renderDiagram } from "./features/diagram/diagramSlice"
+import DiagramContainer from "./features/diagram/DiagramContainer"
 
 const App = () => {
   const dispatch = useAppDispatch()
@@ -23,6 +25,12 @@ const App = () => {
       dispatch(replaceRemoteAppConfigs(dynamicMenuItems.default.remoteApps))
       dispatch(mountApp(dynamicMenuItems.default.remoteApps[0]))
       dispatch(replaceComponentVersionConfigs(dynamicMenuItems.default))
+      dispatch(
+        renderDiagram({
+          edges: dynamicMenuItems.default.edges,
+          nodes: dynamicMenuItems.default.nodes,
+        }),
+      )
     })
   }, [dispatch])
 
@@ -57,6 +65,11 @@ const App = () => {
             </Suspense>
           }
         />
+        <Route
+          path="/diagram"
+          element={<DiagramContainer></DiagramContainer>}
+        />
+
         <Route
           path="*"
           element={

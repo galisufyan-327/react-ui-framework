@@ -58,6 +58,7 @@ export default function DynamicMenu() {
               aria-expanded={open ? "true" : undefined}
               onClick={handleClick}
               color="success"
+              style={{ backgroundColor: "white" }}
             >
               Apps
             </Button>
@@ -78,7 +79,10 @@ export default function DynamicMenu() {
             >
               {remoteAppOptions.map(option => {
                 return (
-                  <MenuItem onClick={() => setCurrentApp(option)}>
+                  <MenuItem
+                    onClick={() => setCurrentApp(option)}
+                    key={option.url}
+                  >
                     {option.display_name}
                   </MenuItem>
                 )
