@@ -20,7 +20,7 @@ const App = () => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    import("./menuConfig.json").then(dynamicMenuItems => {
+    import("./frameworkConfig.json").then(dynamicMenuItems => {
       dispatch(replaceMenuItems(dynamicMenuItems.default.menuItems))
       dispatch(replaceRemoteAppConfigs(dynamicMenuItems.default.remoteApps))
       dispatch(mountApp(dynamicMenuItems.default.remoteApps[0]))
